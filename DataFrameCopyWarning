@@ -1,0 +1,44 @@
+import pandas as pd
+import numpy as np
+
+df = pd.DataFrame(index=np.arange(2010,2020), data=np.random.randint(-10, 10, 10), columns=['num'])
+print(df)
+#        num
+# 2000    3
+# 2001    4
+# 2002   -6
+# 2003   -6
+# 2004    7
+# 2005    1
+# 2006    2
+# 2007    0
+# 2008   -1
+# 2009    3
+
+df_new = df.loc['2000':'2005'] 
+df_new['cate'] = 1
+# SettingWithCopyWarning: 
+# A value is trying to be set on a copy of a slice from a DataFrame.
+# Try using .loc[row_indexer,col_indexer] = value instead
+# 
+# See the caveats in the documentation: http://pandas.pydata.org/pandas-docs/stable/indexing.html#indexing-view-versus-copy
+# 위와 같은 Warning 혹은 오류로 코드가 멈춘다면
+
+
+df_new = df.loc['2000':'2005'].copy() #<-- .copy()로 새로운 dataframe에 메모리를 부여하면 해결됨 :D
+df_new['cate'] = 1
+print(df_new)
+#        num  cate
+# 2000    3    1 
+# 2001    4    1
+# 2002   -6    1
+# 2003   -6    1
+# 2004    7    1
+# 2005    1    1
+# 2006    2    1
+# 2007    0    1
+# 2008   -1    1
+# 2009    3    1
+
+
+# 코드가 복잡할 경우 메모리 사용을 남발하면 안됨니다 
