@@ -1,6 +1,5 @@
 theme: jekyll-theme-minimal
 name: special-waddle
 title: special-waddle
-description: Galery
+description: description
 url: "https://python-for-climate-analysis.github.io/special-waddle/"
-baseurl: ""
